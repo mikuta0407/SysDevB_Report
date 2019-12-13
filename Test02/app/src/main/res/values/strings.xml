@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Timer</string>
+
+    <string name="alermSwitch">アラーム音</string>
+    <string name="cancelButton">キャンセル</string>
+
+    <string name="startstopButton_stop">停止</string>
+    <string name="startstopButton_start">開始</string>
+</resources>
