@@ -6,21 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/ButtonArea"
-        android:layout_width="358dp"
-        android:layout_height="106dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="293dp"
+
+        android:background="@drawable/circular_shape"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="40"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        android:scrollbarDefaultDelayBeforeFade="400"
+        android:scrollbarSize="4dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/disp_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="182dp"
+        android:layout_marginEnd="182dp"
+        android:text="@string/disp_time"
+        android:textSize="80sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75">
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+
+    <LinearLayout
+        android:id="@+id/ButtonArea"
+        android:layout_width="361dp"
+        android:layout_height="89dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/present_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.881">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="68dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginEnd="76"
@@ -66,21 +99,81 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/present_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="182dp"
-        android:layout_marginTop="178dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginBottom="175dp"
-        android:text="@string/disp_time"
-        android:textSize="60sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonArea"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:text="@string/present_time"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/question_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/ptime10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ptime10" />
+
+        <RadioButton
+            android:id="@+id/ptime20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ptime20" />
+
+        <RadioButton
+            android:id="@+id/ptime30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ptime30" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/question_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="@string/question_time"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:orientation="horizontal"
+        android:paddingStart="0"
+        android:paddingEnd="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/qtime5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/qtime5" />
+
+        <RadioButton
+            android:id="@+id/qtime10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/qtime10" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
