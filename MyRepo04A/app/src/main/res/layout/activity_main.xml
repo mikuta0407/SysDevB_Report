@@ -118,6 +118,7 @@
             android:id="@+id/ptime10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/ptime10" />
 
         <RadioButton
@@ -161,6 +162,7 @@
             android:id="@+id/qtime5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/qtime5" />
 
         <RadioButton
