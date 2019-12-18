@@ -9,21 +9,23 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="318dp"
-        android:layout_height="280dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
+        android:layout_marginStart="16dp"
         android:background="@drawable/circular_shape"
         android:indeterminate="false"
-        android:max="100"
 
+        android:max="100"
         android:progress="40"
         android:progressDrawable="@drawable/circular_progress_bar"
         android:scrollbarDefaultDelayBeforeFade="400"
         android:scrollbarSize="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/UIPanel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/disp_time"
@@ -34,46 +36,41 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="357dp"
-        android:layout_height="369dp"
+        android:id="@+id/UIPanel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/ButtonArea"
-            android:layout_width="363dp"
-            android:layout_height="59dp"
-            android:layout_marginBottom="32dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/MainButton"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/qtime_radiobox"
-            app:layout_constraintVertical_bias="0.619">
+            app:layout_constraintTop_toBottomOf="@+id/alerm_switch">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="76dp"
-                android:layout_marginBottom="0dp"
-                android:layout_weight="1"
+                android:layout_marginStart="32dp"
                 android:clickable="false"
                 app:backgroundTint="#546E7A"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_bias="0.571"
                 app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -81,29 +78,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="32dp"
                 android:clickable="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_bias="0.571"
                 app:srcCompat="@drawable/ic_play" />
-
-            <!-- ↑これは実装時には、押すたびにsrcCompatを切り替えて動作/一時停止を表現予定 -->
-
-            <Switch
-                android:id="@+id/alerm_switch"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_weight="1"
-                android:text="@string/aleam" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RadioGroup
             android:id="@+id/ptime_radiobox"
@@ -182,6 +164,17 @@
                 android:layout_weight="1"
                 android:text="@string/qtime10" />
         </RadioGroup>
+
+        <Switch
+            android:id="@+id/alerm_switch"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:text="@string/aleam"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/qtime_radiobox" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

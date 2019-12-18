@@ -13,7 +13,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private boolean run = false;
+    boolean run = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,7 +24,12 @@ public class MainActivity extends AppCompatActivity {
         // いろいろ宣言たいむ
         final FloatingActionButton start_pause = findViewById(R.id.start_pause);
 
-
+        if (savedInstanceState!=null) {
+            //savedInstanceStateがnullでないときは
+            //オブジェクトが再作成されたと判断
+            //カウンターの値を復元
+            run = savedInstanceState.getBoolean("runstatus");
+        }
 
         start_pause.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -38,5 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //メンバ変数mCounterを退避
+        outState.putBoolean("runstatus", run);
     }
 }
