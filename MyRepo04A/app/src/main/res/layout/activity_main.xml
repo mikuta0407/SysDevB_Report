@@ -9,18 +9,22 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="300dp"
-        android:layout_height="293dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
 
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/circular_shape"
         android:indeterminate="false"
         android:max="100"
+
         android:progress="40"
         android:progressDrawable="@drawable/circular_progress_bar"
         android:scrollbarDefaultDelayBeforeFade="400"
-
         android:scrollbarSize="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/ButtonArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +46,8 @@
 
     <LinearLayout
         android:id="@+id/ButtonArea"
-        android:layout_width="361dp"
-        android:layout_height="89dp"
+        android:layout_width="363dp"
+        android:layout_height="59dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/present_time"
@@ -54,14 +58,14 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/cancel"
-            android:layout_width="68dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginEnd="76dp"
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
             android:clickable="false"
-            app:backgroundTint="#75000000"
+            app:backgroundTint="#546E7A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
