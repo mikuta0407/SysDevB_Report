@@ -19,7 +19,7 @@
         android:indeterminate="false"
         android:max="100"
 
-        android:progress="40"
+        android:progress="100"
         android:progressDrawable="@drawable/circular_progress_bar"
         android:scrollbarDefaultDelayBeforeFade="400"
         android:scrollbarSize="4dp"

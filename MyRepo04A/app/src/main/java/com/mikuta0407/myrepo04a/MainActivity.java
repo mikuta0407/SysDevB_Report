@@ -22,30 +22,31 @@ public class MainActivity extends AppCompatActivity {
 
     boolean run = false; //タイマーが動作中かそうじゃないかを記録
     boolean finished = true; //一時停止状態か、終了/キャンセルで止まったのかを記録。
+    boolean question = false; //質問タイムかどうかの判定
 
     private TextView timerText; //数字表示部のTextView
+    private ProgressBar timeProgressBar; //プログレスバー
+    private CountDownTimer countDown; //カウントダウンクラス
     private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss", java.util.Locale.JAPANESE); //データフォーマット
+
     public long ptime; //発表時間設定を記録
-    private long ptimeLeft; //残り時間を記録
-    public long qtime;
-    private long qtimeLeft;
-    public long timetmp = 0;
-    public long interval = 0;
-    private ProgressBar timeProgressBar;
-    private CountDownTimer countDown;
+    public long qtime; //質問時間設定を記録
+    private long leftTime; //残り時間を記録
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // いろいろ宣言たいむ
+        // いろいろ定義たいむ
         final FloatingActionButton start_pause = findViewById(R.id.start_pause);
         final FloatingActionButton cancel = findViewById(R.id.cancel);
         timerText = findViewById(R.id.disp_time);
         timerText.setText(dataFormat.format(0));
         timeProgressBar = findViewById(R.id.progressBar);
 
+        // 回転時状態復元
         // savedInstanceStateがnullでないときは、Activityが再作成されたと判断、状態を復元
         if (savedInstanceState!=null) {
             // まず動作状態を復元
@@ -61,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
-
         // スタート・ストップボタンが押されたら
         start_pause.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                     run = false; //動作をオフにして
                     start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
                     pauseTimer();
-                    //floatingActionButton.
                 } else {        // 動いてなかったら
                     run = true; // オンにして
                     start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause)); //一時停止ボタンに変更
@@ -81,25 +79,28 @@ public class MainActivity extends AppCompatActivity {
                         int ptimeId = ptime_radiobox.getCheckedRadioButtonId();
                         // ptimeに時間設定。(ms)
                         if (ptimeId == R.id.ptime10) {
-                            ptime = 600000;  //10*60*1000 ms
+                            //ptime = 600000;  //10*60*1000 ms
+                            ptime = 10000;
                         } else if (ptimeId == R.id.ptime20) {
                             ptime = 1200000; //20*60*1000 ms
                         } else if (ptimeId == R.id.ptime30) {
                             ptime = 1800000; //30*60*1000 ms
                         }
-                        ptimeLeft = ptime;
+
 
                         // 質問時間設定の選択を取得
                         RadioGroup qtime_radiobox = (RadioGroup)findViewById(R.id.qtime_radiobox);
                         int qtimeId = qtime_radiobox.getCheckedRadioButtonId();
                         // qtimeに時間設定。(ms)
                         if (qtimeId == R.id.qtime10) {
-                            qtime = 300000;  //5*60*1000 ms
+                            //qtime = 300000;  //5*60*1000 ms
+                            qtime = 10000;
                         } else if (qtimeId == R.id.qtime10) {
                             qtime = 600000;  //10*60*1000 ms
                         }
-                        qtimeLeft = qtime;
+
                     }
+
                     startTimer();
                 }
             }
@@ -113,26 +114,37 @@ public class MainActivity extends AppCompatActivity {
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
                 run = false;
                 finished = true;
+                question = false;
             }
         });
     }
 
 
     private void startTimer() {  // タイマー実行
-        countDown = new CountDownTimer(ptimeLeft,1000) {
+        if (question == false) {
+            leftTime = ptime;
+        } else {
+            leftTime = qtime;
+        }
+            countDown = new CountDownTimer(leftTime,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                ptimeLeft = millisUntilFinished;
+                leftTime = millisUntilFinished;
                 updateCountDownText();
             }
             @Override
             public void onFinish() {
-                run = false;
-
+                if (question == false) {
+                    question = true;
+                } else {
+                    run = false;
+                    finished = true;
+                    question = false;
+                }
             }
         }.start();
 
-        run = true;
+        run = true; //スタートしたので
 
     }
 
@@ -143,21 +155,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void resetTimer(){  // リセット
-        ptimeLeft = ptime;
+        leftTime = ptime;
         countDown.cancel();
         updateCountDownText();
         finished = true;
-
+        question = false;
     }
 
     private void updateCountDownText(){ // 時刻の表示
-        int minutes = (int)(ptimeLeft/1000)/60;
-        int seconds = (int)(ptimeLeft/1000)%60;
+        int minutes = (int)(leftTime/1000)/60;
+        int seconds = (int)(leftTime/1000)%60;
+        int timeprogress;
         String timerLeftFormatted = String.format(java.util.Locale.JAPANESE, "%02d:%02d", minutes, seconds);
         timerText.setText(timerLeftFormatted);
-        int timeprogress = ( (int)(((float)ptimeLeft/(float)ptime)*100) );
+        if (question == false) {
+            timeprogress = ((int) (((float) leftTime / (float) ptime) * 100));
+        } else {
+            timeprogress = ((int) (((float) leftTime / (float) qtime) * 100));
+        }
         timeProgressBar.setProgress(timeprogress);
-        Log.i("時間", "Progress: " + ( (int)(((float)ptimeLeft/(float)ptime)*100) ) );
     }
 
 
