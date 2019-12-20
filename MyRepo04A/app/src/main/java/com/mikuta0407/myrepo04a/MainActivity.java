@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     pauseTimer();
                 } else {        // 動いてなかったら
                     start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause)); //一時停止ボタンに変更
-                    if (finished == true){
+
+                    if (finished == true){ //完了後または初期状態の場合
                         // 発表時間設定の選択を取得
                         RadioGroup ptime_radiobox = (RadioGroup)findViewById(R.id.ptime_radiobox);
                         int ptimeId = ptime_radiobox.getCheckedRadioButtonId();
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                    startTimer();
+                    startTimer(); // タイマースタート
                 }
             }
         });
@@ -124,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 resetTimer();
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
-                run = false;
-                finished = true;
-                question = false;
-                pfinished = false;
+                run = false; //動作中じゃなくす
+                finished = true; //完了状態にする
+                question = false; //質問タイム始まってないですよ
+                pfinished = false; //発表も終わってないですよ
             }
         });
     }
@@ -136,35 +137,37 @@ public class MainActivity extends AppCompatActivity {
     private void startTimer() {  // タイマー実行
         if ((pfinished == false) && (question == false)){ //まだ発表時間が終わってなくて、
             if (!run) { //動作中じゃなかったら(回転後じゃなくて純粋なオンだったら)
-                run = true;
-                leftTime = ptime;
+                run = true; //動作中です!宣言
+                leftTime = ptime; //初回実行なので、ptimeの時間をleftTimeにいれる
             }
-        } else if ((pfinished == true) && (question == false)){ // 発表が終わってて回転後じゃなくてonFinishから呼ばれたら
-                question = true;
-                leftTime = qtime;
         }
             countDown = new CountDownTimer(leftTime,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                leftTime = millisUntilFinished;
-                updateCountDownText();
-            }
-            @Override
-            public void onFinish() {
-                if (question == false) { //まだ質問に入ってなかったら(発表が終わったら)
-                    pfinished = true; //発表は完了
-                    startTimer(); //質問時間スタート
-                } else { //質問も終わったら
-                    run = false; //動作じゃないよ
-                    finished = true; //おわったよ
-                    question = false; //質問も終わったよ
-                    pfinished = false;  //状態戻すよ
-                    start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    leftTime = millisUntilFinished;
+                    updateCountDownText();
                 }
-            }
-        }.start();
 
-    }
+                @Override
+                public void onFinish() {
+                    if (question == false) { //まだ質問に入ってなかったら(発表が終わったら)
+                        pfinished = true; //発表は完了
+                        Log.i("デバッグ", "発表時間が終わりました。");
+                        leftTime = qtime;
+                        startTimer(); //質問時間スタート
+                    } else { //質問も終わったら
+                        Log.i("デバッグ", "質問時間も終わりました");
+                        run = false; //動作じゃないよ
+                        finished = true; //おわったよ
+                        question = false; //質問も終わったよ
+                        pfinished = false;  //状態戻すよ
+                        start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+                    }
+                }
+            }.start();
+        }
+
+
 
     private void pauseTimer(){  // 一時停止
         countDown.cancel();
