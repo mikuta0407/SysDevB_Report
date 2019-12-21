@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mikuta0407.PresentationTimer.test" >
+    package="com.mikuta0407.presenttiontimer.test" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -10,8 +10,8 @@
         android:name="androidx.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.mikuta0407.PresentationTimer"
-        android:targetPackage="com.mikuta0407.PresentationTimer" />
+        android:label="Tests for com.mikuta0407.presenttiontimer"
+        android:targetPackage="com.mikuta0407.presenttiontimer" />
 
     <uses-permission android:name="android.permission.REORDER_TASKS" />
 
