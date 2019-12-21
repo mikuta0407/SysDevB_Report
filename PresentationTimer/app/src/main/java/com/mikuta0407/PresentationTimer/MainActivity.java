@@ -1,4 +1,4 @@
-package com.mikuta0407.myrepo04a;
+package com.mikuta0407.PresentationTimer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -156,9 +156,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 mode = 2; //発表は完了
-                    Log.i("デバッグ", "発表時間が終わりました。");
-                    leftTime = qtime;
-                    qStartTimer(); //質問時間スタート
+                Log.i("デバッグ", "発表時間が終わりました。");
+                leftTime = qtime;
+                qStartTimer(); //質問時間スタート
                 //} else { //質問も終わったら
                 //    Log.i("デバッグ", "質問時間も終わりました");
                 //    resetTimer();

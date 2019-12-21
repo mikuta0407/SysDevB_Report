@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.mikuta0407.myrepo04a"
+        applicationId "com.mikuta0407.PresentationTimer"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
