@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     boolean run = false; //タイマーが動作中かそうじゃないかを記録
     boolean finished = true; //一時停止状態か、終了/キャンセルで止まったのかを記録。
-    boolean pfinished = false; //発表時間が終わったかどうか
-    boolean question = false; //質問タイムかどうかの判定
+    boolean paused = false;
+    int mode = 1;
 
     private TextView timerText; //数字表示部のTextView
     private ProgressBar timeProgressBar; //プログレスバー
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
             // まず動作状態を復元
             run = savedInstanceState.getBoolean("runstatus");
             finished = savedInstanceState.getBoolean("finishedstatus");
-            question = savedInstanceState.getBoolean("questionstatus");
-            pfinished = savedInstanceState.getBoolean("pfinishedstatus");
+            //paused;
+            //mode;
 
             //数値系
             ptime = savedInstanceState.getLong("ptimestatus");
@@ -125,20 +125,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 resetTimer();
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
-                run = false; //動作中じゃなくす
-                finished = true; //完了状態にする
-                question = false; //質問タイム始まってないですよ
-                pfinished = false; //発表も終わってないですよ
             }
         });
     }
 
 
     private void startTimer() {  // タイマー実行
-        if ((pfinished == false) && (question == false)){ //まだ発表時間が終わってなくて、
-            if (!run) { //動作中じゃなかったら(回転後じゃなくて純粋なオンだったら)
-                run = true; //動作中です!宣言
-                leftTime = ptime; //初回実行なので、ptimeの時間をleftTimeにいれる
+        run = true;
+        if (paused == true){
+            paused = false;
+            Log.i("デバッグ", "一時停止から復帰しました");
+        } else {
+            if (mode == 1) {
+                leftTime = ptime;
+            } else if (mode == 2) {
+                leftTime = qtime;
             }
         }
             countDown = new CountDownTimer(leftTime,1000) {
@@ -150,18 +151,14 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    if (question == false) { //まだ質問に入ってなかったら(発表が終わったら)
-                        pfinished = true; //発表は完了
+                    if (mode == 1) { //まだ質問に入ってなかったら(発表が終わったら)
+                        mode = 2; //発表は完了
                         Log.i("デバッグ", "発表時間が終わりました。");
                         leftTime = qtime;
                         startTimer(); //質問時間スタート
                     } else { //質問も終わったら
                         Log.i("デバッグ", "質問時間も終わりました");
-                        run = false; //動作じゃないよ
-                        finished = true; //おわったよ
-                        question = false; //質問も終わったよ
-                        pfinished = false;  //状態戻すよ
-                        start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+                        resetTimer();
                     }
                 }
             }.start();
@@ -171,16 +168,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void pauseTimer(){  // 一時停止
         countDown.cancel();
+        paused = true;
         run = false;
         finished = false;
     }
 
     private void resetTimer(){  // リセット
-        leftTime = ptime;
         countDown.cancel();
+        leftTime = ptime;
         updateCountDownText();
         finished = true;
-        question = false;
+        paused = false;
+        mode = 1;
+        run = false;
     }
 
     private void updateCountDownText(){ // 時刻の表示
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         int timeprogress;
         String timerLeftFormatted = String.format(java.util.Locale.JAPANESE, "%02d:%02d", minutes, seconds);
         timerText.setText(timerLeftFormatted);
-        if (question == false) {
+        if (mode == 1) { //はぴょう時間なら
             timeprogress = ((int) (((float) leftTime / (float) ptime) * 100));
         } else {
             timeprogress = ((int) (((float) leftTime / (float) qtime) * 100));
@@ -205,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
         //boolarn系
         outState.putBoolean("runstatus", run);
         outState.putBoolean("finishedstatus", finished);
-        outState.putBoolean("questionstatus", question);
-        outState.putBoolean("pfinishedstatus", pfinished);
+        //paused
+        //mode
 
         //数値系
         outState.putLong("ptimestatus", ptime);
