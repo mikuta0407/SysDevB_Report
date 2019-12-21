@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     boolean finished = true; //一時停止状態か、終了/キャンセルで止まったのかを記録。
     boolean paused = false;
     int mode = 1;
+    boolean rotated = false;
 
     private TextView timerText; //数字表示部のTextView
     private ProgressBar timeProgressBar; //プログレスバー
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton cancel;
     private CountDownTimer countDown; //カウントダウンクラス
     private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss", java.util.Locale.JAPANESE); //データフォーマット
+    private RadioGroup ptime_radiobox;
+    private RadioGroup qtime_radiobox;
 
     public long ptime; //発表時間設定を記録
     public long qtime; //質問時間設定を記録
@@ -45,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
         // いろいろ定義たいむ
         start_pause = findViewById(R.id.start_pause);
         cancel = findViewById(R.id.cancel);
+
+        ptime_radiobox = (RadioGroup)findViewById(R.id.ptime_radiobox);
+        qtime_radiobox = (RadioGroup)findViewById(R.id.qtime_radiobox);
         timerText = findViewById(R.id.disp_time);
         timerText.setText(dataFormat.format(0));
         timeProgressBar = findViewById(R.id.progressBar);
+            timeProgressBar.setProgress(100);
 
         // 回転時状態復元
         // savedInstanceStateがnullでないときは、Activityが再作成されたと判断、状態を復元
@@ -55,14 +62,16 @@ public class MainActivity extends AppCompatActivity {
             // まず動作状態を復元
             run = savedInstanceState.getBoolean("runstatus");
             finished = savedInstanceState.getBoolean("finishedstatus");
-            //paused;
-            //mode;
+            paused = savedInstanceState.getBoolean("pausedstatus");
+            mode = savedInstanceState.getInt("modestatus");
+            rotated = savedInstanceState.getBoolean("rotatedstatus");
 
             //数値系
             ptime = savedInstanceState.getLong("ptimestatus");
             qtime = savedInstanceState.getLong("qtimestatus");
             leftTime = savedInstanceState.getLong("leftTimestatus");
 
+            //UI系
             // スタート・ストップボタンの画像状態を復元
             if (run) { // 動作中なら
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause)); //一時停止ボタンに変更.
@@ -71,6 +80,21 @@ public class MainActivity extends AppCompatActivity {
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
             }
 
+            // ラジオボタン
+            // 発表時間
+            if (ptime == 10000) {
+                ptime_radiobox.check(R.id.ptime10);
+            } else if (ptime == 1200000) {
+                ptime_radiobox.check(R.id.ptime20);
+            } else if (ptime == 1800000) {
+                ptime_radiobox.check(R.id.ptime30);
+            }
+            // 質問時間
+            if (qtime == 15000) {
+                qtime_radiobox.check(R.id.qtime5);
+            } else if (qtime == 600000) {
+                qtime_radiobox.check(R.id.qtime10);
+            }
         }
 
 
@@ -88,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
                     if (finished == true){ //完了後または初期状態の場合
                         // 発表時間設定の選択を取得
-                        RadioGroup ptime_radiobox = (RadioGroup)findViewById(R.id.ptime_radiobox);
                         int ptimeId = ptime_radiobox.getCheckedRadioButtonId();
                         // ptimeに時間設定。(ms)
                         if (ptimeId == R.id.ptime10) {
@@ -102,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                         // 質問時間設定の選択を取得
-                        RadioGroup qtime_radiobox = (RadioGroup)findViewById(R.id.qtime_radiobox);
+
                         int qtimeId = qtime_radiobox.getCheckedRadioButtonId();
                         // qtimeに時間設定。(ms)
-                        if (qtimeId == R.id.qtime10) {
+                        if (qtimeId == R.id.qtime5) {
                             //qtime = 300000;  //5*60*1000 ms
                             qtime = 15000;
                         } else if (qtimeId == R.id.qtime10) {
@@ -113,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     }
-
+                    //ptime_radiobox.setEnabled(false);
                     startTimer(); // タイマースタート
                 }
             }
@@ -125,17 +148,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 resetTimer();
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+                ptime_radiobox.setEnabled(true);
             }
         });
     }
 
 
     private void startTimer() {  // タイマー実行
+
         run = true;
-        if (paused == true){
+        if (paused == true){ //一時停止復帰
             paused = false;
             Log.i("デバッグ", "一時停止から復帰しました");
-        } else {
+        } else if (rotated){
+            rotated = false;
+        } else { // ノーマル起動
             if (mode == 1) {
                 leftTime = ptime;
             } else if (mode == 2) {
@@ -155,7 +182,9 @@ public class MainActivity extends AppCompatActivity {
                         mode = 2; //発表は完了
                         Log.i("デバッグ", "発表時間が終わりました。");
                         leftTime = qtime;
+                        updateCountDownText();
                         startTimer(); //質問時間スタート
+                        updateCountDownText();
                     } else { //質問も終わったら
                         Log.i("デバッグ", "質問時間も終わりました");
                         resetTimer();
@@ -181,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         paused = false;
         mode = 1;
         run = false;
+        timeProgressBar.setProgress(100);
     }
 
     private void updateCountDownText(){ // 時刻の表示
@@ -205,13 +235,17 @@ public class MainActivity extends AppCompatActivity {
         //boolarn系
         outState.putBoolean("runstatus", run);
         outState.putBoolean("finishedstatus", finished);
-        //paused
-        //mode
+        outState.putBoolean("pausedstatus", paused);
+        outState.putInt("modestatus", mode);
+
 
         //数値系
         outState.putLong("ptimestatus", ptime);
         outState.putLong("qtimestatus", qtime);
         outState.putLong("leftTimestatus", leftTime);
+
+        rotated = true;
+        outState.putBoolean("rotatedstatus", rotated);
     }
 
 }
