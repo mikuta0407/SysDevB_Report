@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar timeProgressBar; //プログレスバー
     private FloatingActionButton start_pause;
     private FloatingActionButton cancel;
-    private CountDownTimer countDown; //カウントダウンクラス
+    private CountDownTimer pCountDown; //発表カウントダウンクラス
+    private CountDownTimer qCountDown; //質問カウントダウンクラス
     private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss", java.util.Locale.JAPANESE); //データフォーマット
 
     public long ptime; //発表時間設定を記録
@@ -66,7 +67,11 @@ public class MainActivity extends AppCompatActivity {
             // スタート・ストップボタンの画像状態を復元
             if (run) { // 動作中なら
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause)); //一時停止ボタンに変更.
-                startTimer(); //タイマー続行
+                if (mode == 1) {
+                    pStartTimer(); //タイマー続行
+                } else if (mode == 2) {
+                    qStartTimer();
+                }
             } else {   // 動いてなかったら
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
             }
@@ -114,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                    startTimer(); // タイマースタート
+                    if (mode ==1){
+                        pStartTimer();
+                    }
                 }
             }
         });
@@ -130,51 +137,77 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void startTimer() {  // タイマー実行
+    private void pStartTimer() {  // 質問タイマー実行
         run = true;
         if (paused == true){
             paused = false;
             Log.i("デバッグ", "一時停止から復帰しました");
         } else {
-            if (mode == 1) {
-                leftTime = ptime;
-            } else if (mode == 2) {
-                leftTime = qtime;
+            leftTime = ptime;
+        }
+
+        pCountDown = new CountDownTimer(leftTime,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                leftTime = millisUntilFinished;
+                updateCountDownText();
             }
-        }
-            countDown = new CountDownTimer(leftTime,1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    leftTime = millisUntilFinished;
-                    updateCountDownText();
-                }
 
-                @Override
-                public void onFinish() {
-                    if (mode == 1) { //まだ質問に入ってなかったら(発表が終わったら)
-                        mode = 2; //発表は完了
-                        Log.i("デバッグ", "発表時間が終わりました。");
-                        leftTime = qtime;
-                        startTimer(); //質問時間スタート
-                    } else { //質問も終わったら
-                        Log.i("デバッグ", "質問時間も終わりました");
-                        resetTimer();
-                    }
-                }
-            }.start();
+            @Override
+            public void onFinish() {
+                mode = 2; //発表は完了
+                    Log.i("デバッグ", "発表時間が終わりました。");
+                    leftTime = qtime;
+                    qStartTimer(); //質問時間スタート
+                //} else { //質問も終わったら
+                //    Log.i("デバッグ", "質問時間も終わりました");
+                //    resetTimer();
+
+            }
+        }.start();
+    }
+
+    private void qStartTimer() {  // 質問タイマー実行
+        run = true;
+        if (paused == true){
+            paused = false;
+            Log.i("デバッグ", "一時停止から復帰しました");
+        } else {
+            leftTime = qtime;
         }
 
+        qCountDown = new CountDownTimer(leftTime,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                leftTime = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                //質問も終わったら
+                Log.i("デバッグ", "質問時間も終わりました");
+                resetTimer();
+            }
+        }.start();
+    }
 
 
     private void pauseTimer(){  // 一時停止
-        countDown.cancel();
+        if (mode == 1){
+            pCountDown.cancel();
+        } else {
+            qCountDown.cancel();
+        }
+
         paused = true;
         run = false;
         finished = false;
     }
 
     private void resetTimer(){  // リセット
-        countDown.cancel();
+        pCountDown.cancel();
+        qCountDown.cancel();
         leftTime = ptime;
         updateCountDownText();
         finished = true;
