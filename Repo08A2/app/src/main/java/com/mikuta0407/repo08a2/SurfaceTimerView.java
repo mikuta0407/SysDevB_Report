@@ -11,6 +11,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -23,8 +24,9 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
     private boolean mAttached;
     private GestureDetector mGestureDetector;
 
-    public boolean mTimerPause;
-    public boolean mTimerStop;
+    public boolean mTimerPause = true;
+    public boolean mTimerStop = true;
+    public boolean reset = false;
 
     // 開始時刻、終了時刻、残時間の変数
     private long startTime;
@@ -47,6 +49,8 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
 
         //描画設定用のPaintクラスのインスタンス生成
         paint = new Paint();
+        Log.i("デバッグ", "SurfaceTimerViewのコンストラクタが起動");
+        surfaceCreated(mHolder);
     }
 
     // 画面変更時の処理
@@ -54,7 +58,8 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
     }
 
     // アプリ開始時の処理
-    public void surfaceCreated(SurfaceHolder holder) {
+    public void surfaceCreated(SurfaceHolder Holder) {
+        Log.i("デバッグ", "surfaceCreated");
         //タイマー機能の有効／無効
         mTimerStop = true;
         //スレッド動作の有効／無効
@@ -78,10 +83,10 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
         Canvas canvas = mHolder.lockCanvas();
         if (canvas != null) {
             try {
-                canvas.drawColor(Color.WHITE); // 背景を白く塗りつぶす
+                canvas.drawColor(Color.BLUE); // 背景を白く塗りつぶす
                 paint.setAntiAlias(true);
                 paint.setTextSize(50.f);
-                paint.setColor(Color.rgb(50, 50, 50));
+                paint.setColor(Color.rgb(255, 255, 255));
                 canvas.drawText("00:00.00",0,0, paint);
 
             } finally {
@@ -99,17 +104,17 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
         String tmpff = Integer.toString((int)(remainingTime));
         String ff = tmpff.substring(tmpff.length() - 3);
 
-        paint.setTextSize(400);
+        paint.setTextSize(40);
         paint.setColor(Color.rgb(200, 0, 200));
         Canvas canvas = mHolder.lockCanvas();
         if (canvas != null) {
             try {
-                canvas.drawColor(Color.WHITE);// 背景を白く塗りつぶす
+                canvas.drawColor(Color.BLUE);// 背景を白く塗りつぶす
                 //残り時間の描画
-                paint.setColor(Color.rgb(200, 200, 0));
+                paint.setColor(Color.rgb(255, 255, 255));
                 paint.setAntiAlias(true);
-                paint.setTextSize(150.f);
-                canvas.drawText("" + mm + ":" + ss + "." + ff, 0, 0, paint);
+                paint.setTextSize(50.f);
+                canvas.drawText("" + mm + ":" + ss + "." + ff, 10, 10, paint);
             } finally {
                 mHolder.unlockCanvasAndPost(canvas);
             }
@@ -121,9 +126,19 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
     // 描画スレッド実行コード
     public void run() {
         while (mAttached) {
-            if (mTimerStop || mTimerPause) {
+            if (mTimerStop) {
+                MainActivity.timeProgressBar.setProgress(100);
+                continue;
+            } else if (mTimerPause) {
                 //タイマー停止時は処理を飛ばす
                 continue;
+            }
+            if (reset) {
+                remainingTime = 0;
+                reset = false;
+                MainActivity.timeProgressBar.setProgress(100);
+                mTimerStop = true;
+                mTimerPause = false;
             }
             // タイマーが動作しているときの描画処理
             doDraw();
@@ -133,6 +148,7 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
     }
 
@@ -140,7 +156,7 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
     public void stop() {
         //タイマー動作を停止
         mTimerStop = true;
-        mTimerPause = false;
+        mTimerPause = true;
 
     }
     public void pause() {
@@ -163,5 +179,10 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
         mTimerStop = false;
         mTimerPause = false;
 
+    }
+
+    public void reset() {
+        reset = true;
+        MainActivity.timeProgressBar.setProgress(100);
     }
 }

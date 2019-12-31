@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         start_pause.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View spClick) {
-                if (mSfTV.mTimerPause) { //動作中なら
+                if (!mSfTV.mTimerPause) { //動作中なら
                     start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
                     mSfTV.pause();
                 } else {        // 停止/一時停止中なら
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                mSfTV.stop();
+                mSfTV.reset();
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
             }
         });
