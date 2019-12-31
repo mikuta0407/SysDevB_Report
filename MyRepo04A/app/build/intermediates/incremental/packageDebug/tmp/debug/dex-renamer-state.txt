@@ -1,0 +1,7 @@
+#Fri Dec 20 16:42:48 JST 2019
+base.0=/home/mikuta0407/Android/Projects/MyRepo04A/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=/home/mikuta0407/Android/Projects/MyRepo04A/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex
