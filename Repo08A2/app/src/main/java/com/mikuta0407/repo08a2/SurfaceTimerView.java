@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -82,6 +83,8 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
         if (canvas != null) {
             try {
                 canvas.drawColor(Color.parseColor("#2E2E2E"));// 背景を白く塗りつぶす
+                //getHolder().setFormat(PixelFormat.TRANSLUCENT);
+                //setZOrderOnTop(true);
 
                 paint.setAntiAlias(true);
                 paint.setTextSize(130.f);
@@ -115,7 +118,8 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
         if (canvas != null) {
             try {
                 canvas.drawColor(Color.parseColor("#2E2E2E"));// 背景を白く塗りつぶす
-                //canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                //getHolder().setFormat(PixelFormat.TRANSLUCENT);
+                //setZOrderOnTop(true);
 
                 //残り時間の描画
                 paint.setColor(Color.rgb(255, 255, 255));
