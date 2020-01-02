@@ -37,17 +37,20 @@ public class MainActivity extends AppCompatActivity {
         // いろいろ定義たいむ
         start_pause = findViewById(R.id.start_pause);
         cancel = findViewById(R.id.cancel);
+        timeProgressBar = findViewById(R.id.progressBar);
+        timeProgressBar.setProgress(100);
 
         ptime_radiobox = (RadioGroup)findViewById(R.id.ptime_radiobox);
 
         mSurfaceView = (SurfaceView)findViewById(R.id.surfaceView);
+        mSurfaceView.setZOrderOnTop(true);
         mSfTV = new SurfaceTimerView(this, mSurfaceView);
+
         int width = mSfTV.getWidth();
         int height = mSfTV.getHeight();
         Log.i("デバッグ", "MAWidth= " + width);
         Log.i("デバッグ", "MAHeight= " + height);
-        timeProgressBar = findViewById(R.id.progressBar);
-            timeProgressBar.setProgress(100);
+
 
         // 以下メイン処理
 

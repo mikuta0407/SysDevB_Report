@@ -81,13 +81,12 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
         Canvas canvas = mHolder.lockCanvas();
         if (canvas != null) {
             try {
-                canvas.drawColor(Color.BLUE); // 背景を白く塗りつぶす
-                //canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                canvas.drawColor(Color.parseColor("#2E2E2E"));// 背景を白く塗りつぶす
 
                 paint.setAntiAlias(true);
-                paint.setTextSize(100.f);
+                paint.setTextSize(130.f);
                 paint.setColor(Color.rgb(255, 255, 255));
-                canvas.drawText("00:00.00",104,38, paint);
+                canvas.drawText("00:00.000",15,155, paint);
 
             } finally {
                 mHolder.unlockCanvasAndPost(canvas);
@@ -115,15 +114,15 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
 
         if (canvas != null) {
             try {
-                //canvas.drawColor(Color.BLUE);// 背景を白く塗りつぶす
-                canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+                canvas.drawColor(Color.parseColor("#2E2E2E"));// 背景を白く塗りつぶす
+                //canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 
                 //残り時間の描画
                 paint.setColor(Color.rgb(255, 255, 255));
                 paint.setAntiAlias(true);
-                paint.setTextSize(50.f);
+                paint.setTextSize(130.f);
                 //String.format("%1$02d", 1);
-                canvas.drawText("" + (String.format("%1$02d",mm)) + ":" + (String.format("%1$02d",ss)) + "." + (String.format("%1$03d",ff)), 200, 200, paint);
+                canvas.drawText("" + (String.format("%1$02d",mm)) + ":" + (String.format("%1$02d",ss)) + "." + (String.format("%1$03d",ff)), 15, 155, paint);
             } finally {
                 mHolder.unlockCanvasAndPost(canvas);
             }
@@ -143,6 +142,13 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
             if (mTimerStop && mTimerPause) {
                 // プログレスバーを0状態に(100から減っていくようにしているので、初期状態が100
                 MainActivity.timeProgressBar.setProgress(100);
+                if (reset) { // リセットボタンが押されていたら
+                    remainingTime = 0; // 時間を0に
+                    reset = false;
+                    MainActivity.timeProgressBar.setProgress(100);
+                    mTimerStop = true;
+                    mTimerPause = true;
+                }
                 continue;
             } else if (!mTimerStop && mTimerPause) {
                 //タイマー一時停止時は処理を何もしない
