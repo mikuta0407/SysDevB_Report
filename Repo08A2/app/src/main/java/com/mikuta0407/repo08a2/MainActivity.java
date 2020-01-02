@@ -22,15 +22,10 @@ public class MainActivity extends AppCompatActivity {
     private SurfaceTimerView mSfTV;
 
     public static ProgressBar timeProgressBar; //プログレスバー
-    private FloatingActionButton start_pause;
+    public static FloatingActionButton start_pause;
     private FloatingActionButton cancel;
     private RadioGroup ptime_radiobox;
 
-
-    public long time; //発表時間設定を記録
-    private long leftTime; //残り時間を記録
-
-    private boolean pause = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         mSurfaceView = (SurfaceView)findViewById(R.id.surfaceView);
         mSfTV = new SurfaceTimerView(this, mSurfaceView);
+        int width = mSfTV.getWidth();
+        int height = mSfTV.getHeight();
+        Log.i("デバッグ", "MAWidth= " + width);
+        Log.i("デバッグ", "MAHeight= " + height);
         timeProgressBar = findViewById(R.id.progressBar);
             timeProgressBar.setProgress(100);
 

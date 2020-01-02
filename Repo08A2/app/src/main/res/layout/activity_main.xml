@@ -161,8 +161,9 @@
 
     <SurfaceView
         android:id="@+id/surfaceView"
-        android:layout_width="238dp"
-        android:layout_height="81dp"
+        android:layout_width="204dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
