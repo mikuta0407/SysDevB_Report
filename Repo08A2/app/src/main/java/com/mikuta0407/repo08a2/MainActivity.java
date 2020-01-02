@@ -1,15 +1,17 @@
 package com.mikuta0407.repo08a2;
 
+
+/*TextViewとCountDownTimerで作成していたものを流用したため、質問時間の機能や回転への対応が削除され、レイアウトやString.xmlに残骸があります */
+
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

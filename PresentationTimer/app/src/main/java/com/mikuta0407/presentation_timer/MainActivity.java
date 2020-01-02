@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 leftTime = qtime;
             }
         }
-            countDown = new CountDownTimer(leftTime,1000) {
+            countDown = new CountDownTimer(leftTime,10) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     leftTime = millisUntilFinished;
