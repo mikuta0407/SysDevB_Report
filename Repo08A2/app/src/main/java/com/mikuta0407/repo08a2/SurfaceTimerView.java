@@ -87,7 +87,7 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
                 //setZOrderOnTop(true);
 
                 paint.setAntiAlias(true);
-                paint.setTextSize(130.f);
+                paint.setTextSize(128.f);
                 paint.setColor(Color.rgb(255, 255, 255));
                 canvas.drawText("00:00.000",15,155, paint);
 
@@ -111,8 +111,6 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
             finish = true;
         }
 
-        paint.setTextSize(40);
-        paint.setColor(Color.rgb(200, 0, 200));
         Canvas canvas = mHolder.lockCanvas();
 
         if (canvas != null) {
@@ -124,7 +122,7 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
                 //残り時間の描画
                 paint.setColor(Color.rgb(255, 255, 255));
                 paint.setAntiAlias(true);
-                paint.setTextSize(130.f);
+                paint.setTextSize(128.f);
                 //String.format("%1$02d", 1);
                 canvas.drawText("" + (String.format("%1$02d",mm)) + ":" + (String.format("%1$02d",ss)) + "." + (String.format("%1$03d",ff)), 15, 155, paint);
             } finally {
@@ -173,6 +171,7 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
                 MainActivity.timeProgressBar.setProgress(100);
                 mTimerStop = true;
                 mTimerPause = true;
+                startScreen();
                 continue;
             }
             // タイマーが動作しているときの描画処理
@@ -210,6 +209,8 @@ public class SurfaceTimerView extends SurfaceView implements Runnable, SurfaceHo
     }
 
     public void reset() {
+        //Canvas canvas = mHolder.lockCanvas();
+        //canvas.drawText("00:00.000",15,155, paint);
         reset = true;
         MainActivity.timeProgressBar.setProgress(100);
     }
