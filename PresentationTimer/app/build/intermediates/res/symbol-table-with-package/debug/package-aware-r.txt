@@ -1223,6 +1223,7 @@ id parallax
 id parent
 id parentPanel
 id parent_matrix
+id past_time
 id percent
 id pin
 id present_time
@@ -1448,6 +1449,7 @@ string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string mtrl_chip_close_icon_content_description
 string password_toggle_content_description
+string past_time
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible

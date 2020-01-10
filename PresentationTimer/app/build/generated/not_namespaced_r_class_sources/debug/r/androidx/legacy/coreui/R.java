@@ -110,18 +110,18 @@ public final class R {
         public static final int notification_background = 0x7f080093;
         public static final int notification_main_column = 0x7f080094;
         public static final int notification_main_column_container = 0x7f080095;
-        public static final int right = 0x7f0800ad;
-        public static final int right_icon = 0x7f0800ae;
-        public static final int right_side = 0x7f0800af;
-        public static final int start = 0x7f0800d6;
-        public static final int tag_transition_group = 0x7f0800e1;
-        public static final int tag_unhandled_key_event_manager = 0x7f0800e2;
-        public static final int tag_unhandled_key_listeners = 0x7f0800e3;
-        public static final int text = 0x7f0800e4;
-        public static final int text2 = 0x7f0800e5;
-        public static final int time = 0x7f0800ed;
-        public static final int title = 0x7f0800ee;
-        public static final int top = 0x7f0800f1;
+        public static final int right = 0x7f0800ae;
+        public static final int right_icon = 0x7f0800af;
+        public static final int right_side = 0x7f0800b0;
+        public static final int start = 0x7f0800d7;
+        public static final int tag_transition_group = 0x7f0800e2;
+        public static final int tag_unhandled_key_event_manager = 0x7f0800e3;
+        public static final int tag_unhandled_key_listeners = 0x7f0800e4;
+        public static final int text = 0x7f0800e5;
+        public static final int text2 = 0x7f0800e6;
+        public static final int time = 0x7f0800ee;
+        public static final int title = 0x7f0800ef;
+        public static final int top = 0x7f0800f2;
     }
     public static final class integer {
         private integer() {}
@@ -141,7 +141,7 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int status_bar_notification_info_overflow = 0x7f0d0034;
+        public static final int status_bar_notification_info_overflow = 0x7f0d0035;
     }
     public static final class style {
         private style() {}

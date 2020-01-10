@@ -24,11 +24,12 @@ public class MainActivity extends AppCompatActivity {
     boolean rotated = false;
 
     private TextView timerText; //数字表示部のTextView
+    private TextView pastText; //経過時間のTextView
     private ProgressBar timeProgressBar; //プログレスバー
     private FloatingActionButton start_pause;
     private FloatingActionButton cancel;
     private CountDownTimer countDown; //カウントダウンクラス
-    private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss", java.util.Locale.JAPANESE); //データフォーマット
+    private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", java.util.Locale.JAPANESE); //データフォーマット
     private RadioGroup ptime_radiobox;
     private RadioGroup qtime_radiobox;
 
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         qtime_radiobox = (RadioGroup)findViewById(R.id.qtime_radiobox);
         timerText = findViewById(R.id.disp_time);
         timerText.setText(dataFormat.format(0));
+        pastText = findViewById(R.id.past_time);
+        pastText.setText(dataFormat.format(0));
         timeProgressBar = findViewById(R.id.progressBar);
             timeProgressBar.setProgress(100);
 
@@ -134,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     //ptime_radiobox.setEnabled(false);
+                    ptime_radiobox.setEnabled(false);
                     startTimer(); // タイマースタート
                 }
             }
@@ -146,6 +150,9 @@ public class MainActivity extends AppCompatActivity {
                 resetTimer();
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
                 ptime_radiobox.setEnabled(true);
+                String resetFormatted = String.format(java.util.Locale.JAPANESE, "%02d:%02d.%01d", 0, 0, 0);
+                timerText.setText(resetFormatted);
+                pastText.setText(resetFormatted);
             }
         });
     }
@@ -213,14 +220,30 @@ public class MainActivity extends AppCompatActivity {
     private void updateCountDownText(){ // 時刻の表示
         int minutes = (int)(leftTime/1000)/60;
         int seconds = (int)(leftTime/1000)%60;
+        int ms = (int)((leftTime%1000)/100);
+
+        int pastminutes;
+        int pastseconds;
+        int pastms;
+
         int timeprogress;
-        String timerLeftFormatted = String.format(java.util.Locale.JAPANESE, "%02d:%02d", minutes, seconds);
-        timerText.setText(timerLeftFormatted);
+
         if (mode == 1) { //はぴょう時間なら
+            pastminutes = (int)((ptime-leftTime+100) / 1000)/60;
+            pastseconds = (int)((ptime-leftTime) / 1000)%60;
+            pastms = (int)((ptime-leftTime+100) %1000/100);
             timeprogress = ((int) (((float) leftTime / (float) ptime) * 100));
         } else {
+            pastminutes = (int)((qtime-leftTime+100) / 1000)/60;
+            pastseconds = (int)((qtime-leftTime) / 1000)%60;
+            pastms = (int)((qtime-leftTime+100) %1000/100);
             timeprogress = ((int) (((float) leftTime / (float) qtime) * 100));
         }
+
+        String timerLeftFormatted = String.format(java.util.Locale.JAPANESE, "%02d:%02d.%01d", minutes, seconds, ms);
+        timerText.setText(timerLeftFormatted);
+        String timerPastFormatted = String.format(java.util.Locale.JAPANESE, "%02d:%02d.%01d", pastminutes, pastseconds, pastms);
+        pastText.setText(timerPastFormatted);
         timeProgressBar.setProgress(timeprogress);
     }
 
