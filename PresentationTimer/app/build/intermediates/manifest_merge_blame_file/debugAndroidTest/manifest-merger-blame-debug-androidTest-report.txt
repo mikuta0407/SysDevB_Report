@@ -3,35 +3,35 @@
 3    package="com.mikuta0407.presenttiontimer.test" >
 4
 5    <uses-sdk
-5-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:5:5-74
+5-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:5:5-74
 6        android:minSdkVersion="21"
-6-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:5:15-41
+6-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:5:15-41
 7        android:targetSdkVersion="26" />
-7-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:5:42-71
+7-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:5:42-71
 8
 9    <instrumentation
-9-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:11:5-15:81
+9-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:11:5-15:81
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:11:22-76
+10-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:11:22-76
 11        android:functionalTest="false"
-11-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:14:22-52
+11-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:14:22-52
 12        android:handleProfiling="false"
-12-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:13:22-53
+12-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:13:22-53
 13        android:label="Tests for com.mikuta0407.presenttiontimer"
-13-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:15:22-79
+13-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:15:22-79
 14        android:targetPackage="com.mikuta0407.presenttiontimer" />
-14-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:12:22-77
+14-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:12:22-77
 15
 16    <uses-permission android:name="android.permission.REORDER_TASKS" />
 16-->[androidx.test:core:1.2.0] /home/mikuta0407/.gradle/caches/transforms-2/files-2.1/8b905dc169db8069fa57dc4a2866d2d4/core-1.2.0/AndroidManifest.xml:24:5-72
 16-->[androidx.test:core:1.2.0] /home/mikuta0407/.gradle/caches/transforms-2/files-2.1/8b905dc169db8069fa57dc4a2866d2d4/core-1.2.0/AndroidManifest.xml:24:22-69
 17
 18    <application android:debuggable="true" >
-18-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:7:5-9:19
-18-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:7:18-43
+18-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:7:5-9:19
+18-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:7:18-43
 19        <uses-library android:name="android.test.runner" />
-19-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:8:9-60
-19-->/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger3785592613343704144.xml:8:23-57
+19-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:8:9-60
+19-->/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/tmp/manifest/androidTest/debug/manifestMerger4851174866166996443.xml:8:23-57
 20
 21        <activity
 21-->[androidx.test:core:1.2.0] /home/mikuta0407/.gradle/caches/transforms-2/files-2.1/8b905dc169db8069fa57dc4a2866d2d4/core-1.2.0/AndroidManifest.xml:27:9-33:20

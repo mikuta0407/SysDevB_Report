@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
                         int ptimeId = ptime_radiobox.getCheckedRadioButtonId();
                         // ptimeに時間設定。(ms)
                         if (ptimeId == R.id.ptime10) {
-                            //ptime = 600000;  //10*60*1000 ms
-                            ptime = 10000;
+                            ptime = 600000;  //10*60*1000 ms
+                            //ptime = 10000;
                         } else if (ptimeId == R.id.ptime20) {
                             ptime = 1200000; //20*60*1000 ms
                         } else if (ptimeId == R.id.ptime30) {

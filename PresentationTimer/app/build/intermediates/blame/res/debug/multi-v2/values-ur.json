@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ur/values-ur.xml",
             "map": [
                 {
                     "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-ur/values-ur.xml",

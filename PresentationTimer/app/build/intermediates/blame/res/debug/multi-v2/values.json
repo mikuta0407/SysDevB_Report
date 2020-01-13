@@ -1,23 +1,22 @@
 {
     "logs": [
         {
-            "outputFile": "/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/home/mikuta0407/Android/Projects/PresentationTimer/app/src/main/res/values/strings.xml",
+                    "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/values/styles.xml",
                     "from": {
-                        "startLines": "-1,-1,-1,3,4,-1,-1,-1,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,4,4,-1,-1,-1,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,72,118,-1,-1,-1,-1,-1,-1,-1",
-                        "endColumns": "-1,-1,-1,45,45,-1,-1,-1,-1,-1,-1,-1",
-                        "endOffsets": "-1,-1,-1,113,159,-1,-1,-1,-1,-1,-1,-1"
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
                     },
                     "to": {
-                        "startLines": "594,595,598,601,607,612,613,614,615,616,617,618",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "35443,35483,35819,36051,36723,37493,37541,37581,37621,37661,37701,37739",
-                        "endColumns": "39,54,40,45,45,47,39,39,39,39,37,48",
-                        "endOffsets": "35478,35533,35855,36092,36764,37536,37576,37616,37656,37696,37734,37783"
+                        "startLines": "630",
+                        "startColumns": "4",
+                        "startOffsets": "38631",
+                        "endLines": "635",
+                        "endColumns": "12",
+                        "endOffsets": "38902"
                     }
                 },
                 {
@@ -53,6 +52,21 @@
                     }
                 },
                 {
+                    "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1",
+                        "startColumns": "-1,-1,-1",
+                        "startOffsets": "-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "192,193,194",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "9940,9986,10033",
+                        "endColumns": "45,46,50",
+                        "endOffsets": "9981,10028,10079"
+                    }
+                },
+                {
                     "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/e553813983e46838e58f4d5c941751e0/transition-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
@@ -65,22 +79,6 @@
                         "startOffsets": "30843,31173,31312,31359,31414,32296,32350,32402,32451,32512",
                         "endColumns": "39,42,46,54,44,53,51,48,60,49",
                         "endOffsets": "30878,31211,31354,31409,31454,32345,32397,32446,32507,32557"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/Android/Projects/PresentationTimer/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "-1",
-                        "startColumns": "-1",
-                        "startOffsets": "-1"
-                    },
-                    "to": {
-                        "startLines": "630",
-                        "startColumns": "4",
-                        "startOffsets": "38631",
-                        "endLines": "635",
-                        "endColumns": "12",
-                        "endOffsets": "38902"
                     }
                 },
                 {
@@ -97,21 +95,6 @@
                         "endLines": "15,188,189,190,191,336,337,338,663,2059,2062,2065",
                         "endColumns": "51,60,61,61,63,58,56,53,12,12,12,12",
                         "endOffsets": "781,9747,9809,9871,9935,19656,19713,19767,40767,130414,130540,130668"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/Android/Projects/PresentationTimer/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "-1,-1,-1",
-                        "startColumns": "-1,-1,-1",
-                        "startOffsets": "-1,-1,-1"
-                    },
-                    "to": {
-                        "startLines": "192,193,194",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "9940,9986,10033",
-                        "endColumns": "45,46,50",
-                        "endOffsets": "9981,10028,10079"
                     }
                 },
                 {
@@ -144,6 +127,23 @@
                         "endLines": "24,2996",
                         "endColumns": "60,12",
                         "endOffsets": "1257,193921"
+                    }
+                },
+                {
+                    "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,3,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,4,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,72,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "endColumns": "-1,-1,-1,45,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "endOffsets": "-1,-1,-1,113,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "594,595,598,601,607,612,613,614,615,616,617,618",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "35443,35483,35819,36051,36723,37493,37541,37581,37621,37661,37701,37739",
+                        "endColumns": "39,54,40,45,45,47,39,39,39,39,37,48",
+                        "endOffsets": "35478,35533,35855,36092,36764,37536,37576,37616,37656,37696,37734,37783"
                     }
                 },
                 {
