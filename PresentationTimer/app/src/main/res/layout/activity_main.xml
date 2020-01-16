@@ -16,6 +16,7 @@
 
         android:layout_marginBottom="24dp"
         android:background="@drawable/circular_shape"
+        android:backgroundTint="@color/tcu"
         android:indeterminate="false"
         android:max="100"
         android:progress="100"
@@ -127,13 +128,15 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/question_time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:theme="@style/P_RadioButtonStyle">
 
         <RadioButton
             android:id="@+id/ptime10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:theme="@style/P_RadioButtonStyle"
             android:text="@string/ptime10" />
 
         <RadioButton
@@ -141,6 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:theme="@style/P_RadioButtonStyle"
             android:text="@string/ptime20" />
 
         <RadioButton
@@ -148,6 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:theme="@style/P_RadioButtonStyle"
             android:text="@string/ptime30" />
     </RadioGroup>
 
@@ -171,13 +176,15 @@
         android:paddingEnd="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:theme="@style/Q_RadioButtonStyle">
 
         <RadioButton
             android:id="@+id/qtime5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:theme="@style/Q_RadioButtonStyle"
             android:text="@string/qtime5" />
 
         <RadioButton
@@ -185,6 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:theme="@style/Q_RadioButtonStyle"
             android:text="@string/qtime10" />
     </RadioGroup>
 

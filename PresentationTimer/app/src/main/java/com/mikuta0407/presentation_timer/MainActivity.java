@@ -2,6 +2,7 @@ package com.mikuta0407.presentation_timer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -20,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
     boolean run = false; //タイマーが動作中かそうじゃないかを記録
     boolean finished = true; //一時停止状態か、終了/キャンセルで止まったのかを記録。
     boolean paused = false;
-    int mode = 1;
+    int mode = 1; //1: 発表 2: 質問 3: 点滅用
     boolean rotated = false;
+    boolean flashmode = true;
 
     private TextView timerText; //数字表示部のTextView
     private TextView pastText; //経過時間のTextView
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public long ptime; //発表時間設定を記録
     public long qtime; //質問時間設定を記録
     private long leftTime; //残り時間を記録
+    private long flashTime; //点滅用(回転対策)
 
 
     @Override
@@ -45,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
 
         // いろいろ定義たいむ
         start_pause = findViewById(R.id.start_pause);
+        start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
         cancel = findViewById(R.id.cancel);
 
         ptime_radiobox = (RadioGroup)findViewById(R.id.ptime_radiobox);
         qtime_radiobox = (RadioGroup)findViewById(R.id.qtime_radiobox);
         timerText = findViewById(R.id.disp_time);
-        timerText.setText(dataFormat.format(0));
+        timerText.setText("10:00.0");
         pastText = findViewById(R.id.past_time);
         pastText.setText(dataFormat.format(0));
         timeProgressBar = findViewById(R.id.progressBar);
@@ -70,14 +74,27 @@ public class MainActivity extends AppCompatActivity {
             ptime = savedInstanceState.getLong("ptimestatus");
             qtime = savedInstanceState.getLong("qtimestatus");
             leftTime = savedInstanceState.getLong("leftTimestatus");
+            flashTime = savedInstanceState.getLong("flashTimestatus");
 
             //UI系
             // スタート・ストップボタンの画像状態を復元
             if (run) { // 動作中なら
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause)); //一時停止ボタンに変更.
-                startTimer(); //タイマー続行
+                if (mode == 1 || mode == 2) {
+                    startTimer(); //タイマー続行
+                } else if (mode == 3){
+                    flash();
+                }
             } else {   // 動いてなかったら
                 start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+            }
+
+            if (mode == 1){
+                start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
+                timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
+            } else if (mode == 2 || mode == 3) {
+                start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
+                timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
             }
 
             // ラジオボタン
@@ -115,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
                         int ptimeId = ptime_radiobox.getCheckedRadioButtonId();
                         // ptimeに時間設定。(ms)
                         if (ptimeId == R.id.ptime10) {
-                            ptime = 600000;  //10*60*1000 ms
-                            //ptime = 10000;
+                            //ptime = 600000;  //10*60*1000 ms
+                            ptime = 10000;
                         } else if (ptimeId == R.id.ptime20) {
                             ptime = 1200000; //20*60*1000 ms
                         } else if (ptimeId == R.id.ptime30) {
@@ -173,29 +190,49 @@ public class MainActivity extends AppCompatActivity {
                 leftTime = qtime;
             }
         }
-            countDown = new CountDownTimer(leftTime,10) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    leftTime = millisUntilFinished;
-                    updateCountDownText();
-                }
 
-                @Override
-                public void onFinish() {
-                    if (mode == 1) { //まだ質問に入ってなかったら(発表が終わったら)
-                        mode = 2; //発表は完了
-                        Log.i("デバッグ", "発表時間が終わりました。");
-                        leftTime = qtime;
-                        updateCountDownText();
-                        startTimer(); //質問時間スタート
-                        updateCountDownText();
-                    } else { //質問も終わったら
-                        Log.i("デバッグ", "質問時間も終わりました");
-                        resetTimer();
-                    }
+        countDown = new CountDownTimer(leftTime,10) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                leftTime = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                if (mode == 1) { //まだ質問に入ってなかったら(発表が終わったら)
+                    mode = 2; //発表は完了
+                    Log.i("デバッグ", "発表時間が終わりました。");
+                    leftTime = qtime;
+                    updateCountDownText();
+                    start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
+                    timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
+                    startTimer(); //質問時間スタート
+                    updateCountDownText();
+                } else { //質問も終わったら
+                    Log.i("デバッグ", "質問時間も終わりました");
+                    flashTime = 5000;
+                    flash();
                 }
-            }.start();
-        }
+            }
+        }.start();
+    }
+
+    private void flash () {
+        countDown = new CountDownTimer(flashTime,500) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                flashTime = millisUntilFinished;
+                flashmode = !flashmode;
+                flashparts();
+            }
+
+            @Override
+            public void onFinish() {
+               resetTimer();
+            }
+        }.start();
+    }
 
 
 
@@ -215,6 +252,10 @@ public class MainActivity extends AppCompatActivity {
         mode = 1;
         run = false;
         timeProgressBar.setProgress(100);
+        start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
+        timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
+        start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+        pastText.setText("00:00.0");
     }
 
     private void updateCountDownText(){ // 時刻の表示
@@ -247,7 +288,18 @@ public class MainActivity extends AppCompatActivity {
         timeProgressBar.setProgress(timeprogress);
     }
 
+    private void flashparts(){
+        if (flashmode == true) {
+            timerText.setText("00:00.0");
+            pastText.setText((((qtime)/1000)/60) + ":00.0");
+            timeProgressBar.setProgress(0);
+        } else {
+            timerText.setText("");
+            pastText.setText("");
+            timeProgressBar.setProgress(100);
+        }
 
+    }
     // 状態セーブ
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -266,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
 
         rotated = true;
         outState.putBoolean("rotatedstatus", rotated);
+
+        outState.putLong("flashtimestatus", flashTime);
     }
 
 }
