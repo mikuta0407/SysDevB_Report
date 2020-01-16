@@ -1,23 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "/home/mikuta0407/Android/Projects/PresentationTimer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/home/mikuta0407/Android/Projects/PresentationTimer/app/src/main/res/values/strings.xml",
+                    "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/values/styles.xml",
                     "from": {
-                        "startLines": "6,1,5,3,4,8,11,12,13,16,15,9",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "205,16,164,72,118,246,344,384,424,503,465,294",
-                        "endColumns": "39,54,40,45,45,47,39,39,39,39,37,48",
-                        "endOffsets": "240,66,200,113,159,289,379,419,459,538,498,338"
+                        "startLines": "4,11,15",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "136,448,588",
+                        "endLines": "9,13,17",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "442,582,724"
                     },
                     "to": {
-                        "startLines": "596,597,600,603,609,614,615,616,617,618,619,620",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "35554,35594,35930,36162,36834,37604,37652,37692,37732,37772,37812,37850",
-                        "endColumns": "39,54,40,45,45,47,39,39,39,39,37,48",
-                        "endOffsets": "35589,35644,35966,36203,36875,37647,37687,37727,37767,37807,37845,37894"
+                        "startLines": "632,2070,2237",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "38742,132445,145286",
+                        "endLines": "637,2072,2239",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "39048,132579,145422"
                     }
                 },
                 {
@@ -59,6 +61,23 @@
                     }
                 },
                 {
+                    "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "4,2,3,6,5",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "153,55,102,239,199",
+                        "endColumns": "45,46,50,37,39",
+                        "endOffsets": "194,97,148,272,234"
+                    },
+                    "to": {
+                        "startLines": "192,193,194,256,257",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "9973,10019,10066,14202,14240",
+                        "endColumns": "45,46,50,37,39",
+                        "endOffsets": "10014,10061,10112,14235,14275"
+                    }
+                },
+                {
                     "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/e553813983e46838e58f4d5c941751e0/transition-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
@@ -73,25 +92,6 @@
                         "startOffsets": "30954,31284,31423,31470,31525,32407,32461,32513,32562,32623",
                         "endColumns": "39,42,46,54,44,53,51,48,60,49",
                         "endOffsets": "30989,31322,31465,31520,31565,32456,32508,32557,32618,32668"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/Android/Projects/PresentationTimer/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "4,11,15",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "136,448,588",
-                        "endLines": "9,13,17",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "442,582,724"
-                    },
-                    "to": {
-                        "startLines": "632,2070,2237",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "38742,132445,145286",
-                        "endLines": "637,2072,2239",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "39048,132579,145422"
                     }
                 },
                 {
@@ -111,23 +111,6 @@
                         "endLines": "15,188,189,190,191,338,339,340,665,2063,2066,2069,3791",
                         "endColumns": "51,60,61,61,63,58,56,53,12,12,12,12,24",
                         "endOffsets": "781,9780,9842,9904,9968,19767,19824,19878,40913,132186,132312,132440,239887"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/Android/Projects/PresentationTimer/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "4,2,3,6,5",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "153,55,102,239,199",
-                        "endColumns": "45,46,50,37,39",
-                        "endOffsets": "194,97,148,272,234"
-                    },
-                    "to": {
-                        "startLines": "192,193,194,256,257",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "9973,10019,10066,14202,14240",
-                        "endColumns": "45,46,50,37,39",
-                        "endOffsets": "10014,10061,10112,14235,14275"
                     }
                 },
                 {
@@ -185,6 +168,23 @@
                         "endLines": "24,3007,3892,3981",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "1257,196740,252381,257592"
+                    }
+                },
+                {
+                    "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "6,1,5,3,4,8,11,12,13,16,15,9",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "205,16,164,72,118,246,344,384,424,503,465,294",
+                        "endColumns": "39,54,40,45,45,47,39,39,39,39,37,48",
+                        "endOffsets": "240,66,200,113,159,289,379,419,459,538,498,338"
+                    },
+                    "to": {
+                        "startLines": "596,597,600,603,609,614,615,616,617,618,619,620",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "35554,35594,35930,36162,36834,37604,37652,37692,37732,37772,37812,37850",
+                        "endColumns": "39,54,40,45,45,47,39,39,39,39,37,48",
+                        "endOffsets": "35589,35644,35966,36203,36875,37647,37687,37727,37767,37807,37845,37894"
                     }
                 },
                 {
