@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.mikuta0407.myrepo04a", appContext.getPackageName());
+        assertEquals("com.mikuta0407.presentation_timer", appContext.getPackageName());
     }
 }
