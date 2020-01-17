@@ -824,6 +824,10 @@
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-mdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png"
     },
@@ -882,6 +886,10 @@
     {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/layout_mtrl_layout_snackbar_include.xml.flat",
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/2946ca0ea6c89dab7d7d9fbc18e54292/material-1.0.0/res/layout/mtrl_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
@@ -982,6 +990,10 @@
     {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/layout-sw600dp-v13_design_layout_snackbar.xml.flat",
@@ -1392,6 +1404,10 @@
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
+        "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/drawable-v21_avd_show_password.xml.flat",
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/2946ca0ea6c89dab7d7d9fbc18e54292/material-1.0.0/res/drawable-v21/avd_show_password.xml"
     },
@@ -1770,6 +1786,10 @@
     {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/drawable-hdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/drawable-v21_design_password_eye.xml.flat",

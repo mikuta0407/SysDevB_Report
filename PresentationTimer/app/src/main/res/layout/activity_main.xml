@@ -136,24 +136,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:theme="@style/P_RadioButtonStyle"
-            android:text="@string/ptime10" />
+            android:onClick="radioSetTimeText10"
+            android:text="@string/ptime10"
+            android:theme="@style/P_RadioButtonStyle" />
 
         <RadioButton
             android:id="@+id/ptime20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:theme="@style/P_RadioButtonStyle"
-            android:text="@string/ptime20" />
+            android:onClick="radioSetTimeText20"
+            android:text="@string/ptime20"
+            android:theme="@style/P_RadioButtonStyle" />
 
         <RadioButton
             android:id="@+id/ptime30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:theme="@style/P_RadioButtonStyle"
-            android:text="@string/ptime30" />
+            android:onClick="radioSetTimeText30"
+            android:text="@string/ptime30"
+            android:theme="@style/P_RadioButtonStyle" />
     </RadioGroup>
 
     <TextView

@@ -335,6 +335,19 @@ public class MainActivity extends AppCompatActivity {
 
 	}
 
+	public void radioSetTimeText10(View v){
+		timerText.setText("10:00.0");
+	}
+
+	public void radioSetTimeText20(View v){
+		timerText.setText("20:00.0");
+	}
+
+	public void radioSetTimeText30(View v){
+		timerText.setText("30:00.0");
+	}
+
+
 	// 状態セーブ
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
