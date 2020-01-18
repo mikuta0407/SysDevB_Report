@@ -3,6 +3,7 @@ package com.mikuta0407.presentation_timer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.ColorStateList;
+import android.media.AudioAttributes;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.media.AudioManager;
+import android.media.SoundPool;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
 	private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", java.util.Locale.JAPANESE); //データフォーマット
 	private RadioGroup ptime_radiobox;  //発表時間設定用ラジオボタン
 	private RadioGroup qtime_radiobox;  //質問時間設定用ラジオボタン
+
+	private SoundPool soundPool;
+	private int lastOneMinSound;
+	private int ptimeEndSound;
+	private int qtimeEndSound;
+
 
 	public long ptime; //発表時間設定を記録
 	public long qtime; //質問時間設定を記録
@@ -68,6 +77,28 @@ public class MainActivity extends AppCompatActivity {
 		//プログレスバー
 		timeProgressBar = findViewById(R.id.progressBar);
 		timeProgressBar.setProgress(100);
+
+		//SoundPool
+		AudioAttributes audioAttributes = new AudioAttributes.Builder()
+				// USAGE_MEDIA
+				// USAGE_GAME
+				.setUsage(AudioAttributes.USAGE_GAME)
+				// CONTENT_TYPE_MUSIC
+				// CONTENT_TYPE_SPEECH, etc.
+				.setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+				.build();
+
+		soundPool = new SoundPool.Builder()
+				.setAudioAttributes(audioAttributes)
+				// ストリーム数に応じて
+				.setMaxStreams(3)
+				.build();
+
+		// ファイル準備
+		lastOneMinSound = soundPool.load(this, R.raw.lastOneMinSound, 1);
+		ptimeEndSound = soundPool.load(this, R.raw.ptimeEndSound, 1);
+		qtimeEndSound = soundPool.load(this, R.raw.qtimeEndSound, 1);
+
 
 		/* 回転時状態復元 */
 		// savedInstanceStateがnullでないときは、Activityが再作成されたと判断、状態を復元
@@ -205,6 +236,9 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				leftTime = millisUntilFinished;
+				if (leftTime == 60000){
+					soundPool.play(lastOneMinSound, 1f, 1f, 0, 0, 1.0f);
+				}
 				updateCountDownText();
 			}
 
@@ -217,10 +251,12 @@ public class MainActivity extends AppCompatActivity {
 					updateCountDownText();
 					start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
 					timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
+					soundPool.play(ptimeEndSound, 1f, 1f, 0, 0, 1.0f);
 					startTimer(); //質問時間スタート
 					updateCountDownText();
 				} else { //質問も終わったら
 					Log.i("デバッグ", "質問時間も終わりました");
+					soundPool.play(qtimeEndSound, 1f, 1f, 0, 2, 1.0f);
 					flashTime = 5000;
 					flash();
 				}
