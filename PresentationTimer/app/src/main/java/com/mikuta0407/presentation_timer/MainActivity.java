@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -27,16 +28,20 @@ public class MainActivity extends AppCompatActivity {
 	int mode = 1; //1: 発表 2: 質問 3: 点滅用
 	boolean rotated = false; //回転したのかどうかの記録。回転後の再開用
 	boolean flashmode = true;   //点滅の反転。本当はflashpartsに書くべきなのだが、回転対策のためここに記載。
+	boolean alerm = true;
+	boolean rang = false;
 
 	private TextView timerText; //数字表示部のTextView
 	private TextView pastText; //経過時間のTextView
 	private ProgressBar timeProgressBar; //プログレスバー
 	private FloatingActionButton start_pause;   //スタートストップボタン
 	private FloatingActionButton cancel;    //キャンセルボタン
+	private Switch alermSwitch;
 	private CountDownTimer countDown; //カウントダウンクラス
 	private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", java.util.Locale.JAPANESE); //データフォーマット
 	private RadioGroup ptime_radiobox;  //発表時間設定用ラジオボタン
 	private RadioGroup qtime_radiobox;  //質問時間設定用ラジオボタン
+
 
 	private SoundPool soundPool;
 	private int lastOneMinSound;
@@ -78,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
 		timeProgressBar = findViewById(R.id.progressBar);
 		timeProgressBar.setProgress(100);
 
+		//スイッチ
+		alermSwitch = (Switch)findViewById(R.id.alerm_switch);
+
 		//SoundPool
 		AudioAttributes audioAttributes = new AudioAttributes.Builder()
 				// USAGE_MEDIA
@@ -95,9 +103,9 @@ public class MainActivity extends AppCompatActivity {
 				.build();
 
 		// ファイル準備
-		lastOneMinSound = soundPool.load(this, R.raw.lastOneMinSound, 1);
-		ptimeEndSound = soundPool.load(this, R.raw.ptimeEndSound, 1);
-		qtimeEndSound = soundPool.load(this, R.raw.qtimeEndSound, 1);
+		lastOneMinSound = soundPool.load(this, R.raw.last_one_min_sound, 1);
+		ptimeEndSound = soundPool.load(this, R.raw.ptime_end_sound, 1);
+		qtimeEndSound = soundPool.load(this, R.raw.qtime_end_sound, 1);
 
 
 		/* 回転時状態復元 */
@@ -109,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
 			paused = savedInstanceState.getBoolean("pausedstatus");
 			mode = savedInstanceState.getInt("modestatus");
 			rotated = savedInstanceState.getBoolean("rotatedstatus");
+			alerm = savedInstanceState.getBoolean("alermstatus");
+				alermSwitch.setChecked(alerm);
+			rang = savedInstanceState.getBoolean("rangstatus");
 
 			//数値系
 			ptime = savedInstanceState.getLong("ptimestatus");
@@ -158,6 +169,9 @@ public class MainActivity extends AppCompatActivity {
 
 		// 以下メイン処理
 
+
+		alerm = alermSwitch.isChecked();
+
 		// スタート・ストップボタンが押されたら
 		start_pause.setOnClickListener(new View.OnClickListener(){
 			@Override
@@ -174,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 						// ptimeに時間設定。(ms)
 						if (ptimeId == R.id.ptime10) {
 							//ptime = 600000;  //10*60*1000 ms
-							ptime = 10000;
+							ptime = 20000;
 						} else if (ptimeId == R.id.ptime20) {
 							ptime = 1200000; //20*60*1000 ms
 						} else if (ptimeId == R.id.ptime30) {
@@ -188,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 						// qtimeに時間設定。(ms)
 						if (qtimeId == R.id.qtime5) {
 							//qtime = 300000;  //5*60*1000 ms
-							qtime = 15000;
+							qtime = 20000;
 						} else if (qtimeId == R.id.qtime10) {
 							qtime = 600000;  //10*60*1000 ms
 						}
@@ -215,7 +229,6 @@ public class MainActivity extends AppCompatActivity {
 		});
 	}
 
-
 	private void startTimer() {  // タイマー実行
 
 		run = true;
@@ -236,8 +249,12 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				leftTime = millisUntilFinished;
-				if (leftTime == 60000){
-					soundPool.play(lastOneMinSound, 1f, 1f, 0, 0, 1.0f);
+				//if (leftTime == 60000){
+				if (leftTime <= 10000 && rang == false){
+					rang = true;
+					if (alermSwitch.isChecked()) {
+						soundPool.play(lastOneMinSound, 1f, 1f, 0, 0, 1.0f);
+					}
 				}
 				updateCountDownText();
 			}
@@ -251,15 +268,18 @@ public class MainActivity extends AppCompatActivity {
 					updateCountDownText();
 					start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
 					timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
-					soundPool.play(ptimeEndSound, 1f, 1f, 0, 0, 1.0f);
+					if (alermSwitch.isChecked()) {soundPool.play(ptimeEndSound, 1f, 1f, 0, 0, 1.0f);}
+					rang = false;
 					startTimer(); //質問時間スタート
 					updateCountDownText();
 				} else { //質問も終わったら
 					Log.i("デバッグ", "質問時間も終わりました");
-					soundPool.play(qtimeEndSound, 1f, 1f, 0, 2, 1.0f);
+					if (alermSwitch.isChecked()) { soundPool.play(qtimeEndSound, 1f, 1f, 0, 1, 1.0f);}
 					flashTime = 5000;
+					rang = false;
 					flash();
 				}
+
 			}
 		}.start();
 	}
@@ -392,6 +412,8 @@ public class MainActivity extends AppCompatActivity {
 		outState.putBoolean("runstatus", run);
 		outState.putBoolean("finishedstatus", finished);
 		outState.putBoolean("pausedstatus", paused);
+		outState.putBoolean("alermstatus", alerm);
+		outState.putBoolean("rangstatus", rang);
 		outState.putInt("modestatus", mode);
 
 

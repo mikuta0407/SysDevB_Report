@@ -1,6 +1,38 @@
 {
     "logs": [
         {
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-pl_values-pl.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-pl/values-pl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,220,322,430,516,623,742,821,898,989,1081,1176,1270,1372,1465,1560,1655,1746,1837,1918,2027,2127,2226,2335,2447,2558,2721,2817",
+                        "endColumns": "114,101,107,85,106,118,78,76,90,91,94,93,101,92,94,94,90,90,80,108,99,98,108,111,110,162,95,81",
+                        "endOffsets": "215,317,425,511,618,737,816,893,984,1076,1171,1265,1367,1460,1555,1650,1741,1832,1913,2022,2122,2221,2330,2442,2553,2716,2812,2894"
+                    }
+                },
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-pl/values-pl.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "2899",
+                        "endColumns": "100",
+                        "endOffsets": "2995"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-land_values-land.arsc.flat",
             "map": [
                 {
@@ -30,38 +62,6 @@
                         "endLines": "8",
                         "endColumns": "10",
                         "endOffsets": "431"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-pl_values-pl.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-pl/values-pl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,220,322,430,516,623,742,821,898,989,1081,1176,1270,1372,1465,1560,1655,1746,1837,1918,2027,2127,2226,2335,2447,2558,2721,2817",
-                        "endColumns": "114,101,107,85,106,118,78,76,90,91,94,93,101,92,94,94,90,90,80,108,99,98,108,111,110,162,95,81",
-                        "endOffsets": "215,317,425,511,618,737,816,893,984,1076,1171,1265,1367,1460,1555,1650,1741,1832,1913,2022,2122,2221,2330,2442,2553,2716,2812,2894"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-pl/values-pl.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "30",
-                        "startColumns": "4",
-                        "startOffsets": "2899",
-                        "endColumns": "100",
-                        "endOffsets": "2995"
                     }
                 }
             ]
@@ -354,6 +354,38 @@
             ]
         },
         {
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-nb_values-nb.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-nb/values-nb.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "2816",
+                        "endColumns": "100",
+                        "endOffsets": "2912"
+                    }
+                },
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-nb/values-nb.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,208,303,417,503,603,716,793,869,960,1052,1146,1240,1341,1434,1529,1627,1718,1809,1886,1989,2087,2183,2287,2386,2487,2640,2737",
+                        "endColumns": "102,94,113,85,99,112,76,75,90,91,93,93,100,92,94,97,90,90,76,102,97,95,103,98,100,152,96,78",
+                        "endOffsets": "203,298,412,498,598,711,788,864,955,1047,1141,1235,1336,1429,1524,1622,1713,1804,1881,1984,2082,2178,2282,2381,2482,2635,2732,2811"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
@@ -581,54 +613,6 @@
             ]
         },
         {
-            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-nb_values-nb.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-nb/values-nb.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "30",
-                        "startColumns": "4",
-                        "startOffsets": "2816",
-                        "endColumns": "100",
-                        "endOffsets": "2912"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-nb/values-nb.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,208,303,417,503,603,716,793,869,960,1052,1146,1240,1341,1434,1529,1627,1718,1809,1886,1989,2087,2183,2287,2386,2487,2640,2737",
-                        "endColumns": "102,94,113,85,99,112,76,75,90,91,93,93,100,92,94,97,90,90,76,102,97,95,103,98,100,152,96,78",
-                        "endOffsets": "203,298,412,498,598,711,788,864,955,1047,1141,1235,1336,1429,1524,1622,1713,1804,1881,1984,2082,2178,2282,2381,2482,2635,2732,2811"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-v26_values-v26.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-v26/values-v26.xml",
-                    "from": {
-                        "startLines": "2,3,4,8,12,16",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,130,217,431,657,896",
-                        "endLines": "2,3,7,11,15,16",
-                        "endColumns": "74,86,12,12,12,92",
-                        "endOffsets": "125,212,426,652,891,984"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-fr_values-fr.arsc.flat",
             "map": [
                 {
@@ -656,6 +640,22 @@
                         "startOffsets": "105,216,331,441,523,629,759,837,914,1005,1097,1195,1290,1391,1484,1577,1672,1763,1854,1939,2049,2160,2263,2374,2482,2589,2748,2847",
                         "endColumns": "110,114,109,81,105,129,77,76,90,91,97,94,100,92,92,94,90,90,84,109,110,102,110,107,106,158,98,85",
                         "endOffsets": "211,326,436,518,624,754,832,909,1000,1092,1190,1285,1386,1479,1572,1667,1758,1849,1934,2044,2155,2258,2369,2477,2584,2743,2842,2928"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-v26_values-v26.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-v26/values-v26.xml",
+                    "from": {
+                        "startLines": "2,3,4,8,12,16",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,130,217,431,657,896",
+                        "endLines": "2,3,7,11,15,16",
+                        "endColumns": "74,86,12,12,12,92",
+                        "endOffsets": "125,212,426,652,891,984"
                     }
                 }
             ]
@@ -852,38 +852,6 @@
             ]
         },
         {
-            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-fa_values-fa.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-fa/values-fa.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,215,316,427,511,612,727,807,885,978,1072,1164,1258,1361,1456,1553,1647,1740,1830,1911,2019,2123,2221,2327,2432,2537,2694,2795",
-                        "endColumns": "109,100,110,83,100,114,79,77,92,93,91,93,102,94,96,93,92,89,80,107,103,97,105,104,104,156,100,80",
-                        "endOffsets": "210,311,422,506,607,722,802,880,973,1067,1159,1253,1356,1451,1548,1642,1735,1825,1906,2014,2118,2216,2322,2427,2532,2689,2790,2871"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-fa/values-fa.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "30",
-                        "startColumns": "4",
-                        "startOffsets": "2876",
-                        "endColumns": "100",
-                        "endOffsets": "2972"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-nl_values-nl.arsc.flat",
             "map": [
                 {
@@ -911,6 +879,38 @@
                         "startOffsets": "2914",
                         "endColumns": "100",
                         "endOffsets": "3010"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-fa_values-fa.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-fa/values-fa.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,215,316,427,511,612,727,807,885,978,1072,1164,1258,1361,1456,1553,1647,1740,1830,1911,2019,2123,2221,2327,2432,2537,2694,2795",
+                        "endColumns": "109,100,110,83,100,114,79,77,92,93,91,93,102,94,96,93,92,89,80,107,103,97,105,104,104,156,100,80",
+                        "endOffsets": "210,311,422,506,607,722,802,880,973,1067,1159,1253,1356,1451,1548,1642,1735,1825,1906,2014,2118,2216,2322,2427,2532,2689,2790,2871"
+                    }
+                },
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-fa/values-fa.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "2876",
+                        "endColumns": "100",
+                        "endOffsets": "2972"
                     }
                 }
             ]
@@ -1303,38 +1303,6 @@
             ]
         },
         {
-            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-pt_values-pt.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-pt/values-pt.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "30",
-                        "startColumns": "4",
-                        "startOffsets": "2928",
-                        "endColumns": "100",
-                        "endOffsets": "3024"
-                    }
-                },
-                {
-                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-pt/values-pt.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,225,331,438,527,628,747,832,913,1004,1096,1191,1285,1386,1479,1574,1669,1760,1851,1935,2042,2153,2255,2363,2471,2581,2743,2843",
-                        "endColumns": "119,105,106,88,100,118,84,80,90,91,94,93,100,92,94,94,90,90,83,106,110,101,107,107,109,161,99,84",
-                        "endOffsets": "220,326,433,522,623,742,827,908,999,1091,1186,1280,1381,1474,1569,1664,1755,1846,1930,2037,2148,2250,2358,2466,2576,2738,2838,2923"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-tl_values-tl.arsc.flat",
             "map": [
                 {
@@ -1362,6 +1330,38 @@
                         "startOffsets": "105,216,324,437,525,631,746,826,904,995,1087,1182,1276,1377,1470,1565,1659,1750,1841,1924,2033,2143,2244,2354,2472,2580,2743,2845",
                         "endColumns": "110,107,112,87,105,114,79,77,90,91,94,93,100,92,94,93,90,90,82,108,109,100,109,117,107,162,101,83",
                         "endOffsets": "211,319,432,520,626,741,821,899,990,1082,1177,1271,1372,1465,1560,1654,1745,1836,1919,2028,2138,2239,2349,2467,2575,2738,2840,2924"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/mikuta0407/Android/SysDevB_Report/PresentationTimer/app/build/intermediates/res/merged/debug/values-pt_values-pt.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/f01b27bb220ecb79298884ef36a7a2fb/core-1.1.0/res/values-pt/values-pt.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "2928",
+                        "endColumns": "100",
+                        "endOffsets": "3024"
+                    }
+                },
+                {
+                    "source": "/home/mikuta0407/.gradle/caches/transforms-2/files-2.1/d74b5b498b35fd5cb32d0a6997bb1d3d/appcompat-1.1.0/res/values-pt/values-pt.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,225,331,438,527,628,747,832,913,1004,1096,1191,1285,1386,1479,1574,1669,1760,1851,1935,2042,2153,2255,2363,2471,2581,2743,2843",
+                        "endColumns": "119,105,106,88,100,118,84,80,90,91,94,93,100,92,94,94,90,90,83,106,110,101,107,107,109,161,99,84",
+                        "endOffsets": "220,326,433,522,623,742,827,908,999,1091,1186,1280,1381,1474,1569,1664,1755,1846,1930,2037,2148,2250,2358,2466,2576,2738,2838,2923"
                     }
                 }
             ]
