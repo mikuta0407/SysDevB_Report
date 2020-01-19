@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 	private FloatingActionButton cancel;    //キャンセルボタン
 	private Switch alermSwitch;
 	private CountDownTimer countDown; //カウントダウンクラス
+	private CountDownTimer flashCountDown;
 	private SimpleDateFormat dataFormat = new SimpleDateFormat("mm:ss.S", java.util.Locale.JAPANESE); //データフォーマット
 	private RadioGroup ptime_radiobox;  //発表時間設定用ラジオボタン
 	private RadioGroup qtime_radiobox;  //質問時間設定用ラジオボタン
@@ -202,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
 						// qtimeに時間設定。(ms)
 						if (qtimeId == R.id.qtime5) {
 							//qtime = 300000;  //5*60*1000 ms
-							qtime = 20000;
+							qtime = 15000;
 						} else if (qtimeId == R.id.qtime10) {
 							qtime = 600000;  //10*60*1000 ms
 						}
@@ -262,16 +263,12 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onFinish() {
 				if (mode == 1) { //まだ質問に入ってなかったら(発表が終わったら)
-					mode = 2; //発表は完了
 					Log.i("デバッグ", "発表時間が終わりました。");
 					leftTime = qtime;
 					updateCountDownText();
-					start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
-					timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
 					if (alermSwitch.isChecked()) {soundPool.play(ptimeEndSound, 1f, 1f, 0, 0, 1.0f);}
 					rang = false;
-					startTimer(); //質問時間スタート
-					updateCountDownText();
+					flash();
 				} else { //質問も終わったら
 					Log.i("デバッグ", "質問時間も終わりました");
 					if (alermSwitch.isChecked()) { soundPool.play(qtimeEndSound, 1f, 1f, 0, 1, 1.0f);}
@@ -295,7 +292,13 @@ public class MainActivity extends AppCompatActivity {
 
 	private void resetTimer(){  // リセット
 		if (!finished || run) {
-			countDown.cancel();
+			if (mode == 1 || mode == 2){
+				countDown.cancel();
+			}
+			if (mode == 3 || mode == 4){
+				flashCountDown.cancel();
+			}
+
 			leftTime = ptime;
 			updateCountDownText();
 			finished = true;
@@ -304,6 +307,7 @@ public class MainActivity extends AppCompatActivity {
 			run = false;
 			radioEnabledTrue();
 			timeProgressBar.setProgress(100);
+			flashTime = 5000;
 			start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
 			timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tcu)));
 			start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
@@ -341,18 +345,36 @@ public class MainActivity extends AppCompatActivity {
 		timeProgressBar.setProgress(timeprogress);
 	}
 
-	private void flash () {
-		countDown = new CountDownTimer(flashTime,500) {
+	public void flash () {
+		if (mode == 1){
+			mode = 3;
+		} else if (mode == 2){
+			mode = 4;
+		}
+
+		flashCountDown = new CountDownTimer(flashTime,500) {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				flashTime = millisUntilFinished;
 				flashmode = !flashmode;
 				flashparts();
+				Log.i("デバッグ", "点滅させています");
 			}
 
 			@Override
 			public void onFinish() {
-				resetTimer();
+				flashTime = 5000;
+				if (mode == 3) {
+					mode = 2; //質問モードに
+					start_pause.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
+					timeProgressBar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tokyu)));
+					startTimer(); //質問時間スタート
+					updateCountDownText();
+				} else if (mode == 4) {
+					resetTimer();
+				}
+
+
 			}
 		}.start();
 	}
@@ -360,7 +382,10 @@ public class MainActivity extends AppCompatActivity {
 	private void flashparts(){
 		if (flashmode == true) {
 			timerText.setText("00:00.0");
-			pastText.setText((((qtime)/1000)/60) + ":00.0");
+			//pastText.setText((((qtime)/1000)/60) + ":00.0");
+
+			//デモ用:
+			pastText.setText("00.20.0");
 			timeProgressBar.setProgress(0);
 		} else {
 			timerText.setText("");
