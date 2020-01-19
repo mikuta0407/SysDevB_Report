@@ -19,6 +19,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 
+/*
+	発表用タイマー
+	デモ用設定:
+		発表10分→20秒
+		質問5分→15秒
+		1分前アラーム→10秒前アラーム
+
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
 		//テキスト表示
 		timerText = findViewById(R.id.disp_time);
-		timerText.setText("10:00.0");
+		//timerText.setText("10:00.0");
+		timerText.setText("00:20.0"); //デモ用
 		pastText = findViewById(R.id.past_time);
 		pastText.setText(dataFormat.format(0));
 
@@ -152,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
 
 			// ラジオボタン
 			// 発表時間
-			if (ptime == 10000) {
+			//if (ptime == 600000) {
+			if (ptime == 20000) { //デモ用
 				ptime_radiobox.check(R.id.ptime10);
 			} else if (ptime == 1200000) {
 				ptime_radiobox.check(R.id.ptime20);
@@ -160,7 +170,8 @@ public class MainActivity extends AppCompatActivity {
 				ptime_radiobox.check(R.id.ptime30);
 			}
 			// 質問時間
-			if (qtime == 15000) {
+			//if (qtime == 300000) {
+			if (qtime == 15000) { //デモ用
 				qtime_radiobox.check(R.id.qtime5);
 			} else if (qtime == 600000) {
 				qtime_radiobox.check(R.id.qtime10);
@@ -189,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
 						// ptimeに時間設定。(ms)
 						if (ptimeId == R.id.ptime10) {
 							//ptime = 600000;  //10*60*1000 ms
-							ptime = 20000;
+							ptime = 20000; //デモ用
 						} else if (ptimeId == R.id.ptime20) {
 							ptime = 1200000; //20*60*1000 ms
 						} else if (ptimeId == R.id.ptime30) {
@@ -203,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
 						// qtimeに時間設定。(ms)
 						if (qtimeId == R.id.qtime5) {
 							//qtime = 300000;  //5*60*1000 ms
-							qtime = 15000;
+							qtime = 15000; //デモ用
 						} else if (qtimeId == R.id.qtime10) {
 							qtime = 600000;  //10*60*1000 ms
 						}
@@ -250,8 +261,8 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onTick(long millisUntilFinished) {
 				leftTime = millisUntilFinished;
-				//if (leftTime == 60000){
-				if (leftTime <= 10000 && rang == false){
+				//if (leftTime <= 60000 && rang == false){
+				if (leftTime <= 10000 && rang == false){ //デモ用
 					rang = true;
 					if (alermSwitch.isChecked()) {
 						soundPool.play(lastOneMinSound, 1f, 1f, 0, 0, 1.0f);
@@ -268,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
 					updateCountDownText();
 					if (alermSwitch.isChecked()) {soundPool.play(ptimeEndSound, 1f, 1f, 0, 0, 1.0f);}
 					rang = false;
+					flashTime = 5000;
 					flash();
 				} else { //質問も終わったら
 					Log.i("デバッグ", "質問時間も終わりました");
@@ -383,9 +395,7 @@ public class MainActivity extends AppCompatActivity {
 		if (flashmode == true) {
 			timerText.setText("00:00.0");
 			//pastText.setText((((qtime)/1000)/60) + ":00.0");
-
-			//デモ用:
-			pastText.setText("00.20.0");
+			pastText.setText("00.20.0");//デモ用
 			timeProgressBar.setProgress(0);
 		} else {
 			timerText.setText("");
@@ -417,7 +427,8 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void radioSetTimeText10(View v){
-		timerText.setText("10:00.0");
+		//timerText.setText("10:00.0");
+		timerText.setText("00:20.0"); //デモ用
 	}
 
 	public void radioSetTimeText20(View v){
