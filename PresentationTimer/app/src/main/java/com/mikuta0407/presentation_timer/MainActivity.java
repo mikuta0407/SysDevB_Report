@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 	private int qtimeEndSound;
 
 
-	public long ptime; //発表時間設定を記録
+	public long ptime = 20000; //発表時間設定を記録 //ptime = 600000; //一度も動作させたことがないときにActivityが再生成されるとptimeが何もなくて虚無になるので
 	public long qtime; //質問時間設定を記録
 	private long leftTime; //残り時間を記録
 	private long flashTime; //点滅用(回転対策にここに記載)
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 		alermSwitch = (Switch)findViewById(R.id.alerm_switch);
 
 		//SoundPool
-		AudioAttributes audioAttributes = new AudioAttributes.Builder()
+		final AudioAttributes audioAttributes = new AudioAttributes.Builder()
 				// USAGE_MEDIA
 				// USAGE_GAME
 				.setUsage(AudioAttributes.USAGE_GAME)
@@ -189,8 +189,12 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View spClick) {
 				if (run) { //動作中なら
-					start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
-					pauseTimer();
+					if (mode == 1 || mode == 2){
+						start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_play)); //再生ボタンに変更
+						pauseTimer();
+					} else if (mode == 3 || mode == 4){
+						Log.i("デバッグ","点滅中なので何もしませんよ");
+					}
 				} else {        // 動いてなかったら
 					start_pause.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause)); //一時停止ボタンに変更
 
@@ -428,7 +432,7 @@ public class MainActivity extends AppCompatActivity {
 
 	public void radioSetTimeText10(View v){
 		//timerText.setText("10:00.0");
-		timerText.setText("00:20.0"); //デモ用
+		timerText.setText("00:2sc0.0"); //デモ用
 	}
 
 	public void radioSetTimeText20(View v){
@@ -444,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		//boolarn系
+		//boolean系
 		outState.putBoolean("runstatus", run);
 		outState.putBoolean("finishedstatus", finished);
 		outState.putBoolean("pausedstatus", paused);
